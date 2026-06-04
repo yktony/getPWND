@@ -117,3 +117,16 @@ if (wipeBtn) {
     alert("All stored data has been cleared.");
   });
 }
+
+
+// =========================
+// FAQ TOGGLE
+// =========================
+const faqButtons = document.querySelectorAll(".faq-question");
+
+faqButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const answer = btn.nextElementSibling;
+    answer.classList.toggle("open");
+  });
+});
