@@ -5,16 +5,19 @@
   <title>GETPWND – Child-Protection Initiative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="GETPWND uncovers & reports online predatory behaviour while assisting law-enforcement and raising public awareness.">
+
   <!-- SECURITY HEADERS -->
   <meta http-equiv="Content-Security-Policy"
         content="default-src 'self';
                  img-src 'self' https:;
-                 script-src 'self' 'unsafe-inline' https://formspree.io https://haveibeenpwned.com https://ipapi.co;
+                 script-src 'self' 'unsafe-inline' https://formspree.io https://haveibeenpwned.com https://ipapi.co https://www.google.com https://www.gstatic.com;
                  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
                  font-src https://fonts.gstatic.com;
-                 connect-src 'self' https://formspree.io https://haveibeenpwned.com https://ipapi.co;">
+                 connect-src 'self' https://formspree.io https://haveibeenpwned.com https://ipapi.co;
+                 frame-src https://www.google.com;">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
+
   <!-- favicon -->
   <link rel="icon" type="image/gif" href="assets/img/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +26,24 @@
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+
+<!-- ================= CAPTCHA GATE (added) ================= -->
+<div id="captcha-gate">
+  <div id="captcha-box">
+    <h2>Verification required</h2>
+    <p>Please complete the CAPTCHA to continue.</p>
+
+    <!-- Google reCAPTCHA (test key) -->
+    <div class="g-recaptcha"
+         data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+
+    <button id="captcha-submit">Verify</button>
+  </div>
+</div>
+
+<!-- Load reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<!-- ======================================================== -->
 
 <!-- loading spinner -->
 <div id="loader"><div class="spinner"></div></div>
