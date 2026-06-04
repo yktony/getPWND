@@ -373,3 +373,43 @@ h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
   color: #fff;
   cursor: pointer;
 }
+
+/* ========================================================= */
+/* ========== BUILDER CREDIT — NEON GLOW ==================== */
+/* ========================================================= */
+
+.builders {
+  margin-top: 10px;
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.neon-name {
+  font-weight: 900;
+  color: #b44bff;
+  text-shadow:
+    0 0 5px #b44bff,
+    0 0 10px #b44bff,
+    0 0 20px #b44bff,
+    0 0 40px #8a2be2;
+  animation: neonPulse 1.2s infinite alternate;
+}
+
+@keyframes neonPulse {
+  from {
+    text-shadow:
+      0 0 5px #b44bff,
+      0 0 10px #b44bff,
+      0 0 20px #b44bff,
+      0 0 40px #8a2be2;
+    opacity: 1;
+  }
+  to {
+    text-shadow:
+      0 0 2px #b44bff,
+      0 0 5px #b44bff,
+      0 0 10px #8a2be2;
+    opacity: 0.75;
+  }
+}
