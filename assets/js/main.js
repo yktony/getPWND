@@ -1,211 +1,119 @@
-/* ===== CAPTCHA GATE LOGIC (runs before everything) ===== */
-document.addEventListener("DOMContentLoaded", () => {
-  const gate = document.getElementById("captcha-gate");
-  const btn = document.getElementById("captcha-submit");
+// =========================
+// GETPWND MAIN SCRIPT
+// =========================
 
-  if (!gate || !btn) return;
+console.log("GETPWND site loaded successfully.");
 
-  // Lock scrolling until CAPTCHA is passed
-  document.body.style.overflow = "hidden";
 
-  btn.addEventListener("click", () => {
-    if (typeof grecaptcha === "undefined") {
-      alert("CAPTCHA failed to load. Please refresh the page.");
-      return;
-    }
+// =========================
+// CAPTCHA GATE
+// =========================
+const captchaGate = document.getElementById("captcha-gate");
+const captchaBtn = document.getElementById("captcha-submit");
 
-    const response = grecaptcha.getResponse();
-    if (!response) {
-      alert("Please complete the CAPTCHA.");
-      return;
-    }
-
-    // CAPTCHA passed → fade out gate and unlock site
-    gate.style.opacity = "0";
-    gate.style.transition = "opacity .3s ease";
-    setTimeout(() => gate.remove(), 300);
-
-    document.body.style.overflow = "auto";
+if (captchaBtn) {
+  captchaBtn.addEventListener("click", () => {
+    captchaGate.style.opacity = "0";
+    setTimeout(() => captchaGate.style.display = "none", 300);
   });
-});
+}
 
-/* ----- loader fade ----- */
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  loader.style.opacity = '0';
-  setTimeout(() => loader.remove(), 300);
-});
 
-/* ----- cookie banner ----- */
-const banner = document.getElementById('cookie-banner');
-const okBtn = document.getElementById('cookie-ok');
-if (localStorage.getItem('cookiesAccepted')) banner.remove();
-else banner.style.display = 'block';
-okBtn.addEventListener('click', () => {
-  localStorage.setItem('cookiesAccepted', '1');
-  banner.remove();
-});
+// =========================
+// MOBILE NAV MENU
+// =========================
+const navToggle = document.querySelector(".nav__toggle");
+const navMenu = document.querySelector(".nav__menu");
 
-/* ----- dark / light toggle ----- */
-const toggleBtn = document.getElementById('theme-toggle');
-const html = document.documentElement;
-const saved = localStorage.getItem('theme');
-if (saved === 'light') html.classList.add('light');
-toggleBtn.addEventListener('click', () => {
-  html.classList.toggle('light');
-  localStorage.setItem('theme', html.classList.contains('light') ? 'light' : 'dark');
-});
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    const visible = navMenu.getAttribute("data-visible") === "true";
+    navMenu.setAttribute("data-visible", !visible);
+  });
+}
 
-/* ----- mobile nav ----- */
-const navToggle = document.querySelector('.nav__toggle');
-const navMenu = document.querySelector('.nav__menu');
-navToggle.addEventListener('click', () => {
-  const vis = navMenu.dataset.visible === "true";
-  navMenu.dataset.visible = !vis;
-  navToggle.setAttribute('aria-expanded', !vis);
-});
-navMenu.querySelectorAll('a').forEach(link =>
-  link.addEventListener('click', () => {
-    navMenu.dataset.visible = "false";
-    navToggle.setAttribute('aria-expanded', "false");
-  })
-);
 
-/* ----- typewriter ----- */
-const text = "GETPWND";
-const h1 = document.getElementById('typewriter');
-let i = 0;
-const type = () => {
-  if (i < text.length) {
-    h1.textContent += text.charAt(i);
-    i++;
-    setTimeout(type, 150);
+// =========================
+// THEME TOGGLE
+// =========================
+const themeToggle = document.getElementById("theme-toggle");
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    document.documentElement.classList.toggle("light");
+  });
+}
+
+
+// =========================
+// TYPEWRITER EFFECT
+// =========================
+const typewriter = document.getElementById("typewriter");
+const text = "GETPWND — Protecting Children Online.";
+let index = 0;
+
+function typeEffect() {
+  if (index < text.length) {
+    typewriter.textContent += text.charAt(index);
+    index++;
+    setTimeout(typeEffect, 60);
   }
-};
-window.addEventListener('load', type);
+}
 
-/* ----- count-up numbers ----- */
-const counters = document.querySelectorAll('.counter');
-const section = document.getElementById('numbers');
-const countUp = () => {
+if (typewriter) typeEffect();
+
+
+// =========================
+// BY THE NUMBERS COUNTERS
+// =========================
+const counters = document.querySelectorAll(".counter");
+let countersStarted = false;
+
+function animateCounters() {
   counters.forEach(counter => {
-    const target = +counter.dataset.target;
-    const inc = target / 120;
-    let current = 0;
+    const target = +counter.getAttribute("data-target");
+    const speed = 200;
+
     const update = () => {
+      const current = +counter.innerText;
+
       if (current < target) {
-        current += inc;
-        counter.textContent = Math.ceil(current);
+        const increment = Math.ceil(target / speed);
+        counter.innerText = current + increment;
         requestAnimationFrame(update);
       } else {
-        counter.textContent = target;
+        counter.innerText = target;
       }
     };
+
     update();
   });
-};
-const obs = new IntersectionObserver((entries, o) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { countUp(); o.unobserve(section); }
-  });
-}, { threshold: .5 });
-if (section) obs.observe(section);
-
-/* ----- rate-limit contact form ----- */
-const form = document.getElementById('contactForm');
-const SUBMIT_KEY = 'getpwnd submits';
-const LIMIT = 3;
-const WINDOW_MS = 5 * 60 * 1000;
-function canSubmit() {
-  const now = Date.now();
-  const history = JSON.parse(localStorage.getItem(SUBMIT_KEY) || '[]');
-  const recent = history.filter(t => now - t < WINDOW_MS);
-  localStorage.setItem(SUBMIT_KEY, JSON.stringify(recent));
-  return recent.length < LIMIT;
 }
-function recordSubmit() {
-  const history = JSON.parse(localStorage.getItem(SUBMIT_KEY) || '[]');
-  history.push(Date.now());
-  localStorage.setItem(SUBMIT_KEY, JSON.stringify(history));
+
+function checkCounters() {
+  const section = document.getElementById("numbers");
+  if (!section || countersStarted) return;
+
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight * 0.8) {
+    countersStarted = true;
+    animateCounters();
+  }
 }
-form.addEventListener('submit', (e) => {
-  if (!canSubmit()) {
-    e.preventDefault();
-    alert('You can only send 3 messages every 5 minutes. Please wait.');
-    return;
-  }
-  recordSubmit();
-});
 
-/* ----- honeypot spam trap ----- */
-const pot = document.querySelector('.pot');
-form.addEventListener('submit', (e) => {
-  if (pot.value.length) {
-    e.preventDefault();
-    alert('Bot detected.');
-  }
-});
+window.addEventListener("scroll", checkCounters);
+document.addEventListener("DOMContentLoaded", checkCounters);
 
-/* ----- paste-jacking shield ----- */
-document.addEventListener('paste', (e) => {
-  const data = e.clipboardData.getData('text');
-  if (data.includes('<script>') || data.includes('javascript:')) {
-    alert('Pasted content looks dangerous--review before using.');
-  }
-});
 
-/* ----- clear-site-data button ----- */
-document.getElementById('wipe').onclick = () => {
-  localStorage.clear();
-  caches.keys().then(names => names.forEach(n => caches.delete(n)));
-  document.cookie.split(';').forEach(c => document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/'));
-  alert('Local data wiped.');
-};
+// =========================
+// CLEAR ALL DATA BUTTON
+// =========================
+const wipeBtn = document.getElementById("wipe");
 
-/* ----- canary token ----- */
-if (location.search.includes('admin=1')) {
-  fetch('https://formspree.io/f/xwpejqql', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ subject: 'Canary triggered', url: location.href })
+if (wipeBtn) {
+  wipeBtn.addEventListener("click", () => {
+    localStorage.clear();
+    sessionStorage.clear();
+    alert("All stored data has been cleared.");
   });
-  location.replace('https://example.com');
-};
-
-/* ----- dynamic year ----- */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ===== LIVE CYBER DEFENCE ===== */
-
-/* 1.  HaveIBeenPwned breach alert (public email) */
-const publicEmail = 'pwndme@dnmx.cc';
-fetch(`https://haveibeenpwned.com/api/v3/breachedaccount/${encodeURIComponent(publicEmail)}`)
-  .then(r => r.ok ? r.json() : Promise.reject())
-  .then(data => {
-    if (data.length) {
-      const bar = document.getElementById('cyber-bar');
-      bar.textContent = `⚠️  Public breach detected on ${data[0].BreachDate} – review passwords.`;
-      bar.style.background = '#e74c3c';
-      bar.style.color = '#fff';
-      bar.style.padding = '.5rem';
-      bar.style.textAlign = 'center';
-      bar.style.fontSize = '.9rem';
-    }
-  })
-  .catch(() => {}); // silent fail if rate-limited
-
-/* 3.  Live VPN / proxy / threat detector */
-fetch('https://ipapi.co/json/')
-  .then(r => r.json())
-  .then(data => {
-    const bar = document.getElementById('cyber-bar');
-    if (data.org.includes('VPN') || data.threat_level === 'high') {
-      bar.textContent = '🔒 VPN/proxy or high-threat IP detected – extra verification may apply.';
-      bar.style.background = '#f39c12';
-      bar.style.color = '#000';
-      bar.style.padding = '.5rem';
-      bar.style.textAlign = 'center';
-      bar.style.fontSize = '.9rem';
-    }
-  })
-  .catch(() => {});
+}
