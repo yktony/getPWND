@@ -1,3 +1,34 @@
+/* ===== CAPTCHA GATE LOGIC (runs before everything) ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const gate = document.getElementById("captcha-gate");
+  const btn = document.getElementById("captcha-submit");
+
+  if (!gate || !btn) return;
+
+  // Lock scrolling until CAPTCHA is passed
+  document.body.style.overflow = "hidden";
+
+  btn.addEventListener("click", () => {
+    if (typeof grecaptcha === "undefined") {
+      alert("CAPTCHA failed to load. Please refresh the page.");
+      return;
+    }
+
+    const response = grecaptcha.getResponse();
+    if (!response) {
+      alert("Please complete the CAPTCHA.");
+      return;
+    }
+
+    // CAPTCHA passed → fade out gate and unlock site
+    gate.style.opacity = "0";
+    gate.style.transition = "opacity .3s ease";
+    setTimeout(() => gate.remove(), 300);
+
+    document.body.style.overflow = "auto";
+  });
+});
+
 /* ----- loader fade ----- */
 window.addEventListener('load', () => {
   const loader = document.getElementById('loader');
