@@ -27,13 +27,12 @@
 </head>
 <body>
 
-<!-- ================= CAPTCHA GATE (added) ================= -->
+<!-- ================= CAPTCHA GATE ================= -->
 <div id="captcha-gate">
   <div id="captcha-box">
     <h2>Verification required</h2>
     <p>Please complete the CAPTCHA to continue.</p>
 
-    <!-- Google reCAPTCHA (test key) -->
     <div class="g-recaptcha"
          data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
 
@@ -41,9 +40,8 @@
   </div>
 </div>
 
-<!-- Load reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<!-- ======================================================== -->
+<!-- ================================================= -->
 
 <!-- loading spinner -->
 <div id="loader"><div class="spinner"></div></div>
@@ -65,6 +63,7 @@
       <li><a href="#numbers">Numbers</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#report">Report</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
@@ -149,6 +148,41 @@
   </div>
 </section>
 
+<!-- ================= REPORT A PREDATOR ================= -->
+<section id="report" class="contact">
+  <div class="container">
+    <h2>Report a Predator</h2>
+
+    <p style="text-align:center; max-width:600px; margin:0 auto 2rem; opacity:.8;">
+      Use this form to confidentially report suspicious or predatory online behavior.
+      All reports are reviewed manually. False reports are logged and banned.
+    </p>
+
+    <form class="contact__form"
+          action="https://formspree.io/f/xwpejqql"
+          method="POST"
+          enctype="multipart/form-data"
+          id="reportForm">
+
+      <input type="text" name="platform" placeholder="Platform (Discord, Roblox, Instagram…)" required>
+      <input type="text" name="username" placeholder="Predator's username / ID" required>
+      <textarea name="details" placeholder="Describe what happened…" required></textarea>
+
+      <label style="opacity:.8;">Upload screenshots (optional):</label>
+      <input type="file" name="evidence" accept="image/*" multiple>
+
+      <input type="text" name="city" autocomplete="off" tabindex="-1" class="pot">
+
+      <button type="submit" class="btn">Submit Report</button>
+    </form>
+
+    <p style="text-align:center; margin-top:1rem; font-size:.85rem; opacity:.6;">
+      By submitting, you confirm this report is truthful and made in good faith.
+    </p>
+  </div>
+</section>
+<!-- ===================================================== -->
+
 <!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="container">
@@ -157,7 +191,6 @@
       <input type="text" name="a7384" placeholder="Name" required>
       <input type="email" name="b9021" placeholder="Email" required>
       <textarea name="c4815" placeholder="Message" required></textarea>
-      <!-- honeypot -->
       <input type="text" name="city" autocomplete="off" tabindex="-1" class="pot">
       <button type="submit" class="btn">Send message</button>
     </form>
@@ -165,7 +198,6 @@
       <a href="https://discord.gg/q2B43czYXc" target="_blank" rel="noopener">Discord</a>
       <a href="mailto:pwndme@dnmx.cc">Email</a>
     </div>
-    <!-- clear-data button -->
     <button id="wipe" class="btn btn--small" style="margin-top:1rem;">Clear all data</button>
   </div>
 </section>
@@ -175,7 +207,6 @@
   <p>© <span id="year"></span> GETPWND. Built for protection, not profit.</p>
 </footer>
 
-<!-- invisible canary link -->
 <a href="/?admin=1" style="display:none">admin</a>
 
 <script src="assets/js/main.js"></script>
