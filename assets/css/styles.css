@@ -375,41 +375,45 @@ h2 { font-size: 2.2rem; margin-bottom: 2rem; text-align: center; }
 }
 
 /* ========================================================= */
-/* ========== BUILDER CREDIT — NEON GLOW ==================== */
+/* ========== BUILDER CREDIT — BIGGER NEON GLOW ============ */
 /* ========================================================= */
 
 .builders {
-  margin-top: 10px;
-  font-size: 1rem;
+  margin-top: 14px;
+  font-size: 1.1rem;
   text-align: center;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .neon-name {
   font-weight: 900;
-  color: #b44bff;
+  font-size: 1.2rem;
+  color: #d9b3ff;
   text-shadow:
-    0 0 5px #b44bff,
-    0 0 10px #b44bff,
-    0 0 20px #b44bff,
-    0 0 40px #8a2be2;
-  animation: neonPulse 1.2s infinite alternate;
+    0 0 6px #d9b3ff,
+    0 0 14px #d9b3ff,
+    0 0 26px #b44bff,
+    0 0 46px #8a2be2,
+    0 0 70px #5b1aa8;
+  animation: neonPulse 1s infinite alternate;
 }
 
 @keyframes neonPulse {
   from {
     text-shadow:
-      0 0 5px #b44bff,
-      0 0 10px #b44bff,
-      0 0 20px #b44bff,
-      0 0 40px #8a2be2;
+      0 0 6px #d9b3ff,
+      0 0 14px #d9b3ff,
+      0 0 26px #b44bff,
+      0 0 46px #8a2be2,
+      0 0 70px #5b1aa8;
     opacity: 1;
   }
   to {
     text-shadow:
-      0 0 2px #b44bff,
-      0 0 5px #b44bff,
-      0 0 10px #8a2be2;
-    opacity: 0.75;
+      0 0 3px #d9b3ff,
+      0 0 8px #b44bff,
+      0 0 18px #8a2be2,
+      0 0 32px #5b1aa8;
+    opacity: 0.85;
   }
 }
