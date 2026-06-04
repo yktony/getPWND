@@ -6,19 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="GETPWND uncovers & reports online predatory behaviour while assisting law-enforcement and raising public awareness.">
 
-  <!-- SECURITY HEADERS -->
-  <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self';
-                 img-src 'self' https:;
-                 script-src 'self' 'unsafe-inline' https://formspree.io https://haveibeenpwned.com https://ipapi.co https://www.google.com https://www.gstatic.com;
-                 style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-                 font-src https://fonts.gstatic.com;
-                 connect-src 'self' https://formspree.io https://haveibeenpwned.com https://ipapi.co;
-                 frame-src https://www.google.com;">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()">
-
-  <!-- favicon -->
   <link rel="icon" type="image/gif" href="assets/img/favicon.gif">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,37 +14,23 @@
 </head>
 <body>
 
-<!-- ================= CAPTCHA GATE ================= -->
+<!-- CAPTCHA -->
 <div id="captcha-gate">
   <div id="captcha-box">
     <h2>Verification required</h2>
     <p>Please complete the CAPTCHA to continue.</p>
-
-    <div class="g-recaptcha"
-         data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-
+    <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
     <button id="captcha-submit">Verify</button>
   </div>
 </div>
-
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-<!-- ================================================= -->
-
-<!-- loading spinner -->
-<div id="loader"><div class="spinner"></div></div>
-
-<!-- cookie banner -->
-<div id="cookie-banner"><p>We use cookies to enhance your experience. <button id="cookie-ok">OK</button></p></div>
-
-<!-- LIVE CYBER ALERTS BAR -->
-<div id="cyber-bar"></div>
 
 <!-- NAV -->
 <nav class="nav">
   <div class="nav__container">
     <a href="#top" class="nav__logo">GETPWND</a>
-    <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
-    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    <button id="theme-toggle">🌓</button>
+    <button class="nav__toggle">☰</button>
     <ul class="nav__menu" data-visible="false">
       <li><a href="#about">About</a></li>
       <li><a href="#numbers">Numbers</a></li>
@@ -99,7 +72,7 @@
   </div>
 </section>
 
-<!-- COUNT-UP NUMBERS -->
+<!-- NUMBERS -->
 <section id="numbers" class="numbers">
   <div class="container">
     <h2>By the numbers</h2>
@@ -130,7 +103,7 @@
         <div class="card__body">
           <h3>AboveAll Discord</h3>
           <p>Business server providing high-quality scripting services for Roblox players & developers. FSR only.</p>
-          <a href="https://discord.gg/q2B43czYXc" target="_blank" rel="noopener" class="btn btn--small">Join Discord</a>
+          <a href="https://discord.gg/q2B43czYXc" target="_blank" class="btn btn--small">Join Discord</a>
         </div>
       </article>
     </div>
@@ -148,7 +121,7 @@
   </div>
 </section>
 
-<!-- ================= REPORT A PREDATOR ================= -->
+<!-- REPORT A PREDATOR -->
 <section id="report" class="contact">
   <div class="container">
     <h2>Report a Predator</h2>
@@ -159,7 +132,7 @@
     </p>
 
     <form class="contact__form"
-          action="https://formspree.io/f/xwpejqql"
+          action="https://formspree.io/f/xbdejarb"
           method="POST"
           enctype="multipart/form-data"
           id="reportForm">
@@ -181,33 +154,31 @@
     </p>
   </div>
 </section>
-<!-- ===================================================== -->
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
   <div class="container">
     <h2>Contact</h2>
-    <form class="contact__form" action="https://formspree.io/f/xwpejqql" method="POST" id="contactForm">
+    <form class="contact__form" action="https://formspree.io/f/xbdejarb" method="POST" id="contactForm">
       <input type="text" name="a7384" placeholder="Name" required>
       <input type="email" name="b9021" placeholder="Email" required>
       <textarea name="c4815" placeholder="Message" required></textarea>
       <input type="text" name="city" autocomplete="off" tabindex="-1" class="pot">
       <button type="submit" class="btn">Send message</button>
     </form>
+
     <div class="contact__social">
-      <a href="https://discord.gg/q2B43czYXc" target="_blank" rel="noopener">Discord</a>
+      <a href="https://discord.gg/q2B43czYXc" target="_blank">Discord</a>
       <a href="mailto:pwndme@dnmx.cc">Email</a>
     </div>
+
     <button id="wipe" class="btn btn--small" style="margin-top:1rem;">Clear all data</button>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p>© <span id="year"></span> GETPWND. Built for protection, not profit.</p>
 </footer>
-
-<a href="/?admin=1" style="display:none">admin</a>
 
 <script src="assets/js/main.js"></script>
 </body>
