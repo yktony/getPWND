@@ -95,6 +95,119 @@
   </div>
 </section>
 
+<!-- ⭐ ADDED SECTION #2 — CYBERSECURITY ALERTS -->
+<section id="threat-feed" class="threat-feed">
+  <div class="container">
+    <h2>Cybersecurity Alerts</h2>
+    <p class="section-intro">
+      Stay informed with recent cybersecurity alerts and vulnerability disclosures.
+    </p>
+
+    <div id="threat-list" class="threat-list">
+      <p>Loading current alerts...</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  async function loadThreatFeed() {
+    try {
+      const response = await fetch("https://cve.circl.lu/api/last");
+      const data = await response.json();
+
+      const container = document.getElementById("threat-list");
+      container.innerHTML = "";
+
+      data.slice(0, 5).forEach(item => {
+        const div = document.createElement("div");
+        div.className = "threat-item";
+        div.innerHTML = `
+          <h3>${item.id}</h3>
+          <p>${item.summary}</p>
+        `;
+        container.appendChild(div);
+      });
+    } catch (error) {
+      document.getElementById("threat-list").innerHTML =
+        "<p>Unable to load alerts at this time.</p>";
+    }
+  }
+
+  loadThreatFeed();
+</script>
+
+<!-- ⭐ ADDED SECTION #3 — ONLINE SAFETY EDUCATION -->
+<section id="safety" class="safety">
+  <div class="container">
+    <h2>Online Safety Education</h2>
+
+    <p class="section-intro">
+      Understanding how online predators operate is an important step in protecting yourself and others.
+    </p>
+
+    <div class="safety-grid">
+
+      <div class="safety-item">
+        <h3>How grooming begins</h3>
+        <p>
+          Predators often start by building trust offering compliments gifts or emotional support to create a false sense of safety.
+        </p>
+      </div>
+
+      <div class="safety-item">
+        <h3>Warning signs to watch for</h3>
+        <p>
+          Sudden secrecy requests to move conversations to private platforms or attempts to isolate a minor from friends and family are common red flags.
+        </p>
+      </div>
+
+      <div class="safety-item">
+        <h3>Protecting your accounts</h3>
+        <p>
+          Use strong passwords enable two factor authentication and avoid sharing personal information with strangers online.
+        </p>
+      </div>
+
+      <div class="safety-item">
+        <h3>What to do if you suspect grooming</h3>
+        <p>
+          Document the behavior avoid confrontation and report the individual to a trusted adult platform moderators or law enforcement.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ⭐ ADDED SECTION #4 — OUR TEAM -->
+<section id="team" class="team">
+  <div class="container">
+    <h2>Our Team</h2>
+
+    <p class="section-intro">
+      GETPWND was created by individuals committed to protecting young people and promoting safer online spaces.
+    </p>
+
+    <div class="team-grid">
+
+      <div class="team-member">
+        <h3>notfound.tony</h3>
+        <p>
+          Founder and lead developer focused on building tools that help identify and report harmful online behavior.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <h3>Deadestzombiealive</h3>
+        <p>
+          Co creator and project contributor dedicated to improving online safety and supporting victims of digital exploitation.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <section id="projects" class="projects">
   <div class="container">
     <h2>Projects</h2>
@@ -103,7 +216,7 @@
         <img src="assets/img/discord.gif" alt="Discord project">
         <div class="card__body">
           <h3>AboveAll Discord</h3>
-          <p>Business server providing high-quality scripting services for Roblox players & developers. FSR only.</p>
+          <p>Business server providing high-quality scripting services for Roblox players and developers. FSR only.</p>
           <a href="https://discord.gg/q2B43czYXc" target="_blank" class="btn btn--small">Join Discord</a>
         </div>
       </article>
@@ -131,7 +244,7 @@
           id="reportForm">
 
       <input type="text" name="platform" placeholder="Platform (Discord, Roblox, Instagram…)" required>
-      <input type="text" name="username" placeholder="Predator's username / ID" required>
+      <input type="text" name="username" placeholder="Predator's username or ID" required>
       <textarea name="details" placeholder="Describe what happened…" required></textarea>
 
       <label style="opacity:.8;">Upload screenshots (optional):</label>
@@ -166,16 +279,16 @@
   <div class="container">
     <h2>If you're struggling</h2>
     <p class="support-text">
-      If you or someone you know is feeling overwhelmed, unsafe, or emotionally distressed,
-      you don’t have to face it alone. Reaching out to a trained professional or someone you trust
+      If you or someone you know is feeling overwhelmed unsafe or emotionally distressed
+      you do not have to face it alone. Reaching out to a trained professional or someone you trust
       can make a real difference.
     </p>
     <div class="support-box">
       <p>
-        • Talk to a trusted friend, family member, teacher, or mentor.<br>
-        • Reach out to a licensed mental‑health professional.<br>
+        • Talk to a trusted friend family member teacher or mentor.<br>
+        • Reach out to a licensed mental health professional.<br>
         • Contact a local crisis hotline or emergency service in your area.<br>
-        • If you ever feel in immediate danger, seek emergency help right away.
+        • If you ever feel in immediate danger seek emergency help right away.
       </p>
       <div class="hotline-box">
         <p><strong>Emergency or crisis hotlines in your area:</strong></p>
@@ -187,7 +300,7 @@
       </div>
     </div>
     <p class="support-note">
-      You deserve safety, support, and someone who will listen.
+      You deserve safety support and someone who will listen.
     </p>
   </div>
 </section>
@@ -197,28 +310,28 @@
     <h2>FAQ</h2>
 
     <div class="faq-item">
-      <button class="faq-question">What is GETPWND?</button>
+      <button class="faq-question">What is GETPWND</button>
       <div class="faq-answer">
-        <p>GETPWND is a child-protection initiative focused on uncovering and reporting online predatory behavior while assisting law enforcement.</p>
+        <p>GETPWND is a child protection initiative focused on uncovering and reporting online predatory behavior while assisting law enforcement.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question">Is my report anonymous?</button>
+      <button class="faq-question">Is my report anonymous</button>
       <div class="faq-answer">
         <p>Yes. We do not collect personal information unless you choose to provide it. All reports are confidential.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question">What happens after I submit a report?</button>
+      <button class="faq-question">What happens after I submit a report</button>
       <div class="faq-answer">
-        <p>Your report is reviewed manually. If evidence is valid, it is forwarded to the appropriate authorities.</p>
+        <p>Your report is reviewed manually. If evidence is valid it is forwarded to the appropriate authorities.</p>
       </div>
     </div>
 
     <div class="faq-item">
-      <button class="faq-question">Can I upload screenshots?</button>
+      <button class="faq-question">Can I upload screenshots</button>
       <div class="faq-answer">
         <p>Yes. You can upload multiple images as evidence when submitting a report.</p>
       </div>
@@ -228,11 +341,11 @@
 </section>
 
 <footer class="footer">
-  <p>© <span id="year"></span> GETPWND. Built for protection, not profit.</p>
+  <p>© <span id="year"></span> GETPWND. Built for protection not profit.</p>
 
   <p class="builders">
     Website built by 
-    <span class="neon-name">notfound.tony</span> & 
+    <span class="neon-name">notfound.tony</span> 
     <span class="neon-name">Deadestzombiealive</span>
   </p>
 </footer>
