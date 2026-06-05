@@ -19,12 +19,49 @@
 </head>
 <body>
 
+<!-- 🔥 GLOBAL SITE KILL SWITCH -->
+<div id="site-offline" style="
+  display:none;
+  position:fixed;
+  inset:0;
+  background:black;
+  color:white;
+  font-family:'Space Grotesk', sans-serif;
+  padding:40px;
+  text-align:center;
+  z-index:999999999;
+">
+  <h1 style="font-size:3rem; margin-bottom:1rem;">⚠️ FBI — SYSTEM UNDER MAINTENANCE</h1>
+  <p style="font-size:1.3rem; opacity:.8;">
+    This website is temporarily offline for investigation and security updates.<br>
+    Please check back later.
+  </p>
+</div>
+
+<script>
+  async function checkSiteStatus() {
+    try {
+      const res = await fetch("status.json?_=" + Date.now());
+      const data = await res.json();
+
+      if (data.online === false) {
+        document.body.innerHTML = "";
+        document.body.appendChild(document.getElementById("site-offline"));
+        document.getElementById("site-offline").style.display = "block";
+      }
+    } catch (e) {
+      console.error("Status check failed", e);
+    }
+  }
+
+  checkSiteStatus();
+</script>
+
 <div id="captcha-gate">
   <div id="captcha-box">
     <h2>Verification required</h2>
     <p>Please complete the CAPTCHA to continue.</p>
 
-    <!-- ⭐ FIXED CAPTCHA KEY -->
     <div class="g-recaptcha" data-sitekey="6LcKqQ0tAAAAAArEF3En0pE4uCRN915LyBvWAnHc"></div>
 
     <button id="captcha-submit">Verify</button>
@@ -78,7 +115,6 @@
     </div>
   </div>
 </section>
-
 <section id="numbers" class="numbers">
   <div class="container">
     <h2>By the numbers</h2>
@@ -150,7 +186,6 @@
     </p>
 
     <div class="safety-grid">
-
       <div class="safety-item">
         <h3>How grooming begins</h3>
         <p>
@@ -343,7 +378,6 @@
 
   </div>
 </section>
-
 <footer class="footer">
   <p>© <span id="year"></span> GETPWND. Built for protection not profit.</p>
 
