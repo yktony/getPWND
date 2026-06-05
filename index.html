@@ -4,11 +4,14 @@
   <meta charset="utf-8">
   <title>GETPWND – Child-Protection Initiative</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="GETPWND reports & prevents online predatory behaviour while assisting law-enforcement and raising public awareness.">
-  <link rel="icon" type="image/gif" href="assets/img/shield-black.gif">
-  <meta name="author" content="notfound.tony & Deadsetzombielive">
-  <meta name="creator" content="notfound.tony & Deadsetzombielive">
-  <meta name="publisher" content="notfound.tony & Deadsetzombielive">
+  <meta name="description" content="GETPWND uncovers & reports online predatory behaviour while assisting law-enforcement and raising public awareness.">
+
+  <link rel="icon" type="image/gif" href="assets/img/physics-shield-black.gif">
+
+  <meta name="author" content="notfound.tony & Deadestzombiealive">
+  <meta name="creator" content="notfound.tony & Deadestzombiealive">
+  <meta name="publisher" content="notfound.tony & Deadestzombiealive">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -20,10 +23,14 @@
   <div id="captcha-box">
     <h2>Verification required</h2>
     <p>Please complete the CAPTCHA to continue.</p>
-    <div class="g-recaptcha" data-sitekey="6LeIaAAAaC2VRqyh7IUMIEGNO_MXjizXhI"></div>
+
+    <!-- ⭐ FIXED CAPTCHA KEY -->
+    <div class="g-recaptcha" data-sitekey="6LcKqQ0tAAAAAArEF3En0pE4uCRN915LyBvWAnHc"></div>
+
     <button id="captcha-submit">Verify</button>
   </div>
 </div>
+
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <nav class="nav">
@@ -35,6 +42,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#numbers">Numbers</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#report">Report</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="#support">Support</a></li>
@@ -45,20 +53,28 @@
 
 <header id="top" class="hero">
   <div class="hero__text">
-    <p id="typewriter">Child-protection initiative focused on uncovering & reporting online predatory behaviour.</p>
+    <h1 id="typewriter"></h1>
+    <p>Child-protection initiative focused on uncovering & reporting online predatory behaviour.</p>
     <a href="#about" class="btn">Learn more</a>
   </div>
   <img src="assets/img/hero.gif" alt="Hero image">
 </header>
 
 <section id="about" class="about">
-  <div class="container about__grid">
-    <div class="about__text">
-      <h2>About us</h2>
-      <p>We are a volunteer-driven initiative dedicated to identifying, reporting, and preventing online predatory behaviour.</p>
-    </div>
-    <div class="about__img">
-      <img src="assets/img/about.jpg" alt="About image">
+  <div class="container">
+    <h2>About us</h2>
+    <div class="about__grid">
+      <div class="about__text">
+        <p>
+          GETPWND is a child-protection initiative focused on uncovering and reporting online
+          predatory behaviour. Through careful documentation and evidence collection, we aim to
+          assist law-enforcement and raise public awareness while operating within legal and
+          ethical standards.
+        </p>
+      </div>
+      <div class="about__img">
+        <img src="assets/img/about.gif" alt="About image">
+      </div>
     </div>
   </div>
 </section>
@@ -68,22 +84,22 @@
     <h2>By the numbers</h2>
     <div class="nums-grid">
       <div class="num-item">
-        <div class="counter">120+</div>
-        <p>Reports submitted</p>
+        <span class="counter" data-target="164">0</span>
+        <p>Reports filed</p>
       </div>
       <div class="num-item">
-        <div class="counter">45+</div>
-        <p>Predators identified</p>
+        <span class="counter" data-target="99">0</span>
+        <p>Predators flagged</p>
       </div>
       <div class="num-item">
-        <div class="counter">30+</div>
-        <p>Law enforcement collaborations</p>
+        <span class="counter" data-target="56">0</span>
+        <p>Cases assisted</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CYBERSECURITY ALERTS -->
+<!-- ⭐ CYBERSECURITY ALERTS -->
 <section id="threat-feed" class="threat-feed">
   <div class="container">
     <h2>Cybersecurity Alerts</h2>
@@ -100,7 +116,7 @@
 <script>
   async function loadThreatFeed() {
     try {
-      const response = await fetch("https://api.cvesearch.com/latest");
+      const response = await fetch("https://cve.circl.lu/api/last");
       const data = await response.json();
 
       const container = document.getElementById("threat-list");
@@ -124,47 +140,220 @@
   loadThreatFeed();
 </script>
 
+<!-- ⭐ ONLINE SAFETY EDUCATION -->
 <section id="safety" class="safety">
   <div class="container">
     <h2>Online Safety Education</h2>
+
+    <p class="section-intro">
+      Understanding how online predators operate is an important step in protecting yourself and others.
+    </p>
+
     <div class="safety-grid">
+
       <div class="safety-item">
-        <h3>Protect Your Identity</h3>
-        <p>Learn how to safeguard your personal information online.</p>
+        <h3>How grooming begins</h3>
+        <p>
+          Predators often start by building trust offering compliments gifts or emotional support to create a false sense of safety.
+        </p>
       </div>
+
       <div class="safety-item">
-        <h3>Recognize Grooming</h3>
-        <p>Understand the signs of online grooming and how to report it.</p>
+        <h3>Warning signs to watch for</h3>
+        <p>
+          Sudden secrecy requests to move conversations to private platforms or attempts to isolate a minor from friends and family are common red flags.
+        </p>
       </div>
+
       <div class="safety-item">
-        <h3>Safe Communication</h3>
-        <p>Tips for maintaining safe and respectful online interactions.</p>
+        <h3>Protecting your accounts</h3>
+        <p>
+          Use strong passwords enable two factor authentication and avoid sharing personal information with strangers online.
+        </p>
       </div>
+
       <div class="safety-item">
-        <h3>Parental Guidance</h3>
-        <p>Resources for parents to help protect their children online.</p>
+        <h3>What to do if you suspect grooming</h3>
+        <p>
+          Document the behavior avoid confrontation and report the individual to a trusted adult platform moderators or law enforcement.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
+<!-- ⭐ OUR TEAM -->
 <section id="team" class="team">
   <div class="container">
     <h2>Our Team</h2>
+
+    <p class="section-intro">
+      GETPWND was created by individuals committed to protecting young people and promoting safer online spaces.
+    </p>
+
     <div class="team-grid">
+
       <div class="team-member">
         <h3>notfound.tony</h3>
-        <p>Founder & Lead Investigator</p>
+        <p>
+          Founder and lead developer focused on building tools that help identify and report harmful online behavior.
+        </p>
       </div>
+
       <div class="team-member">
-        <h3>Deadsetzombielive</h3>
-        <p>Co-Founder & Technical Analyst</p>
+        <h3>Deadestzombiealive</h3>
+        <p>
+          Co creator and project contributor dedicated to improving online safety and supporting victims of digital exploitation.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- (Your remaining sections: Projects, Skills, Report, Contact, Support, FAQ, Footer) -->
+<section id="projects" class="projects">
+  <div class="container">
+    <h2>Projects</h2>
+    <div class="projects__grid">
+      <article class="card">
+        <img src="assets/img/discord.gif" alt="Discord project">
+        <div class="card__body">
+          <h3>AboveAll Discord</h3>
+          <p>Business server providing high-quality scripting services for Roblox players and developers. FSR only.</p>
+          <a href="https://discord.gg/q2B43czYXc" target="_blank" class="btn btn--small">Join Discord</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
+<section id="skills" class="skills">
+  <div class="container">
+    <h2>Skills</h2>
+    <div class="skills__list">
+      <span class="tag">Cybersecurity Learner</span>
+      <span class="tag">Certified Therapist</span>
+    </div>
+  </div>
+</section>
+
+<section id="report" class="contact">
+  <div class="container">
+    <h2>Report a Predator</h2>
+    <form class="contact__form"
+          action="https://formspree.io/f/xbdejarb"
+          method="POST"
+          enctype="multipart/form-data"
+          id="reportForm">
+
+      <input type="text" name="platform" placeholder="Platform (Discord, Roblox, Instagram…)" required>
+      <input type="text" name="username" placeholder="Predator's username or ID" required>
+      <textarea name="details" placeholder="Describe what happened…" required></textarea>
+
+      <label style="opacity:.8;">Upload screenshots (optional):</label>
+      <input type="file" name="evidence" accept="image/*" multiple>
+
+      <input type="text" name="city" autocomplete="off" tabindex="-1" class="pot">
+
+      <button type="submit" class="btn">Submit Report</button>
+    </form>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <form class="contact__form" action="https://formspree.io/f/xbdejarb" method="POST" id="contactForm">
+      <input type="text" name="a7384" placeholder="Name" required>
+      <input type="email" name="b9021" placeholder="Email" required>
+      <textarea name="c4815" placeholder="Message" required></textarea>
+      <input type="text" name="city" autocomplete="off" tabindex="-1" class="pot">
+      <button type="submit" class="btn">Send message</button>
+    </form>
+    <div class="contact__social">
+      <a href="https://discord.gg/q2B43czYXc" target="_blank">Discord</a>
+      <a href="mailto:pwndme@dnmx.cc">Email</a>
+    </div>
+    <button id="wipe" class="btn btn--small" style="margin-top:1rem;">Clear all data</button>
+  </div>
+</section>
+
+<section id="support" class="support">
+  <div class="container">
+    <h2>If you're struggling</h2>
+    <p class="support-text">
+      If you or someone you know is feeling overwhelmed unsafe or emotionally distressed
+      you do not have to face it alone. Reaching out to a trained professional or someone you trust
+      can make a real difference.
+    </p>
+    <div class="support-box">
+      <p>
+        • Talk to a trusted friend family member teacher or mentor.<br>
+        • Reach out to a licensed mental health professional.<br>
+        • Contact a local crisis hotline or emergency service in your area.<br>
+        • If you ever feel in immediate danger seek emergency help right away.
+      </p>
+      <div class="hotline-box">
+        <p><strong>Emergency or crisis hotlines in your area:</strong></p>
+        <ul>
+          <li>[Priory Wellbeing Centre UK]</li>
+          <li>[Emergency services 911]</li>
+          <li>[Suicide Hotline 988]</li>
+        </ul>
+      </div>
+    </div>
+    <p class="support-note">
+      You deserve safety support and someone who will listen.
+    </p>
+  </div>
+</section>
+
+<section id="faq" class="faq">
+  <div class="container">
+    <h2>FAQ</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">What is GETPWND</button>
+      <div class="faq-answer">
+        <p>GETPWND is a child protection initiative focused on uncovering and reporting online predatory behavior while assisting law enforcement.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Is my report anonymous</button>
+      <div class="faq-answer">
+        <p>Yes. We do not collect personal information unless you choose to provide it. All reports are confidential.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">What happens after I submit a report</button>
+      <div class="faq-answer">
+        <p>Your report is reviewed manually. If evidence is valid it is forwarded to the appropriate authorities.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Can I upload screenshots</button>
+      <div class="faq-answer">
+        <p>Yes. You can upload multiple images as evidence when submitting a report.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <p>© <span id="year"></span> GETPWND. Built for protection not profit.</p>
+
+  <p class="builders">
+    Website built by 
+    <span class="neon-name">notfound.tony</span> 
+    <span class="neon-name">Deadestzombiealive</span>
+  </p>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
